@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import ApplyForm from '../features/job/components/ApplyForm';
 
 const Apply = () => {
@@ -6,7 +6,6 @@ const Apply = () => {
   const { company, title } = location.state;
 
   // Extracting the "id" parameter from the URL
-  const { id } = useParams();
 
   return (
     <div className="h-screen bg-teal-400">

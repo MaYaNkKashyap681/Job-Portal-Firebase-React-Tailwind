@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import JobListings from '../features/job/components/JobListings';
 
 const Explore = () => {

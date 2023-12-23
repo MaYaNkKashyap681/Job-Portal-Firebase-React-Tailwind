@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { useState } from 'react';
-import Button from '../shared/components/ui/Button';
 import bell from '../assets/bell.svg';
 // import { toast } from "react-toastify";
 // import { messaging } from "../config/firebase.config";
@@ -16,7 +15,7 @@ const Home = () => {
     setIsNotificationOpen((prev) => !prev);
   };
 
-  const [userData, setUserData] = useState<any>({
+  const [userData] = useState<any>({
     name: auth.currentUser?.displayName,
     email: auth.currentUser?.email,
   });

@@ -8,8 +8,6 @@ import Loading from '../../../shared/components/ui/Loading';
 import { userUpdatedJob } from '../services/user-update-service';
 import {
   collection,
-  doc,
-  getDoc,
   getDocs,
   query,
   where,
@@ -18,8 +16,6 @@ import { db } from '../../../config/firebase.config';
 import { getAuth } from 'firebase/auth';
 
 const JobCreationForm = () => {
-  const auth = getAuth();
-
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState<boolean>(false);
   const [role, setRole] = useState<string>('');

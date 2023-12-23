@@ -1,7 +1,6 @@
-import { getAuth } from 'firebase/auth';
 import { useLocation, useParams } from 'react-router-dom';
 import JobResponses from '../features/job/components/JobResponses';
-import { useEffect } from 'react';
+
 
 const Responses = () => {
   const location = useLocation();

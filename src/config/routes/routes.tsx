@@ -1,4 +1,4 @@
-import { Navigate, Outlet, createBrowserRouter } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 import {
   Apply,
   Create,
@@ -9,7 +9,6 @@ import {
   Signup,
 } from '../../pages';
 import Auth from '../../pages/Auth';
-import { useAuthStatus } from '../../shared/hooks/useAuthStatus';
 
 export const AppLayout = () => {
   return (

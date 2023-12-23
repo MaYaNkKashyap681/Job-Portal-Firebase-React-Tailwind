@@ -1,15 +1,7 @@
 import { db } from '../../../config/firebase.config';
 import {
   collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  startAfter,
-  Firestore,
   addDoc,
-  serverTimestamp,
 } from 'firebase/firestore';
 
 import { getAuth } from 'firebase/auth';
