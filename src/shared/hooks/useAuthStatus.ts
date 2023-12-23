@@ -14,7 +14,6 @@ export const useAuthStatus = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setLoggedIn(true);
-          toast.success("User Logged In!")
         }
         setCheckingStatus(false);
       });
