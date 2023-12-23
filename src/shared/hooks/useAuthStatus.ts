@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 //Need to be Fixed
 export const useAuthStatus = () => {
@@ -13,6 +14,7 @@ export const useAuthStatus = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setLoggedIn(true);
+          toast.success("User Logged In!")
         }
         setCheckingStatus(false);
       });

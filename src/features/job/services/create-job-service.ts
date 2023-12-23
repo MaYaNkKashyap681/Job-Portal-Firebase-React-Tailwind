@@ -6,6 +6,7 @@ import {
 
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { useAuthStatus } from '../../../shared/hooks/useAuthStatus';
 
 type jobListing = {
   role: string;
@@ -16,11 +17,13 @@ type jobListing = {
   company: string;
 };
 export const createJob = async (details: jobListing) => {
+
+  const {loggedIn} = useAuthStatus();
   const { role, location, jobtype, aboutDesc, reqDesc, company } = details;
 
   try {
     const auth = getAuth();
-    if (!auth.currentUser?.email) {
+    if (!loggedIn) {
       toast('Login To Create');
       return false;
     }

@@ -11,7 +11,8 @@ export const loginUser = async (details: LoginFields) => {
       email,
       password
     );
-    if (userCredentials.user) {
+    if (userCredentials.user.email) {
+      localStorage.setItem("userId", userCredentials.user.email);
       return 'Sucessful';
     }
   } catch (err: any) {

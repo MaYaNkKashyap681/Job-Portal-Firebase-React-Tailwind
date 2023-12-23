@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { useState } from 'react';
 import bell from '../assets/bell.svg';
+import { useAuthStatus } from '../shared/hooks/useAuthStatus';
 // import { toast } from "react-toastify";
 // import { messaging } from "../config/firebase.config";
 // import { getToken } from "firebase/messaging";
@@ -9,16 +10,13 @@ import bell from '../assets/bell.svg';
 const Home = () => {
   const auth = getAuth();
 
+  const {loggedIn} = useAuthStatus()
+
   const [isNotificationOpen, setIsNotificationOpen] = useState<boolean>(false);
 
   const handleNotificationOpen = () => {
     setIsNotificationOpen((prev) => !prev);
   };
-
-  const [userData] = useState<any>({
-    name: auth.currentUser?.displayName,
-    email: auth.currentUser?.email,
-  });
 
   const onLogout = () => {
     auth.signOut();
@@ -48,7 +46,7 @@ const Home = () => {
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-teal-500">
       <div className="absolute top-0 flex justify-end">
-        {userData.name && (
+        {loggedIn && (
           <div className="flex gap-4 pt-4">
             <div
               onClick={onLogout}
@@ -82,7 +80,7 @@ const Home = () => {
             Explore Jobs
           </button>
         </Link>
-        {userData.name ? (
+        {loggedIn ? (
           <>
             <Link to="/create">
               <button className="mr-4 rounded-full bg-white px-6 py-2 font-bold text-teal-500 transition duration-300 hover:bg-teal-400">
