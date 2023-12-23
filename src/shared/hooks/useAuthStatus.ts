@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { toast } from 'react-toastify';
 
 //Need to be Fixed
 export const useAuthStatus = () => {
