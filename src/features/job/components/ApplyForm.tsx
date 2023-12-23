@@ -54,9 +54,9 @@ const ApplyForm = () => {
       <h2 className="text-2xl font-bold text-white">Apply For The Job Here:</h2>
 
       {isJobApplied ? (
-        <>
+        <div className='mt-[2rem]'>
           <Button>Job has been applied</Button>
-        </>
+        </div>
       ) : (
         <>
           <div className="mt-[1rem] flex flex-col gap-4">
