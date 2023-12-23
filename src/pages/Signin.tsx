@@ -1,11 +1,11 @@
-import LoginForm from "../features/auth/components/LoginForm"
+import LoginForm from '../features/auth/components/LoginForm';
 
 const Signin = () => {
   return (
     <div>
-      <LoginForm/>
+      <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;

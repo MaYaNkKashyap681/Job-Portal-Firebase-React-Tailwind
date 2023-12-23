@@ -1,35 +1,32 @@
-import { Link } from "react-router-dom"
-import { getAuth } from "firebase/auth";
-import { useState } from "react";
-import Button from "../shared/components/ui/Button";
-import bell from '../assets/bell.svg'
+import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import { useState } from 'react';
+import Button from '../shared/components/ui/Button';
+import bell from '../assets/bell.svg';
 // import { toast } from "react-toastify";
 // import { messaging } from "../config/firebase.config";
 // import { getToken } from "firebase/messaging";
 
 const Home = () => {
-
   const auth = getAuth();
 
   const [isNotificationOpen, setIsNotificationOpen] = useState<boolean>(false);
 
-
   const handleNotificationOpen = () => {
     setIsNotificationOpen((prev) => !prev);
-  }
+  };
 
   const [userData, setUserData] = useState<any>({
     name: auth.currentUser?.displayName,
-    email: auth.currentUser?.email
-  })
+    email: auth.currentUser?.email,
+  });
 
   const onLogout = () => {
-    auth.signOut()
+    auth.signOut();
     window.location.reload();
-  }
+  };
 
   //Notification Based Code
-
 
   // async function requestPermission() {
   //   const permission = await Notification.requestPermission();
@@ -45,69 +42,72 @@ const Home = () => {
   //   }
   // }
 
-
   // useEffect(() => {
   //   requestPermission();
   // }, [])
 
-
   return (
-    <div className="bg-teal-500 min-h-screen flex items-center justify-center relative">
+    <div className="relative flex min-h-screen items-center justify-center bg-teal-500">
       <div className="absolute top-0 flex justify-end">
-        {
-          userData.name && <div className="flex gap-4 pt-4">
-            <div onClick={onLogout} className="text-white font-bold p-1 flex items-center justify-center underline cursor-pointer">
+        {userData.name && (
+          <div className="flex gap-4 pt-4">
+            <div
+              onClick={onLogout}
+              className="flex cursor-pointer items-center justify-center p-1 font-bold text-white underline"
+            >
               Logout
             </div>
             {/* <Button variant="teal">
               <span className="text-white">Profile</span>
             </Button> */}
-            <div className="flex items-center justify-center bg-[#000000] p-2 rounded-full hover:bg-opacity-80 cursor-pointer relative" onClick={handleNotificationOpen}>
+            <div
+              className="relative flex cursor-pointer items-center justify-center rounded-full bg-[#000000] p-2 hover:bg-opacity-80"
+              onClick={handleNotificationOpen}
+            >
               <img src={bell} alt="Bell Icon" className="" />
-              {isNotificationOpen &&
-                <div className="absolute top-16 right-[-500px] h-[400px] w-[500px] bg-white rounded-lg shadow-md">
-                </div>
-              }
+              {isNotificationOpen && (
+                <div className="absolute right-[-500px] top-16 h-[400px] w-[500px] rounded-lg bg-white shadow-md"></div>
+              )}
             </div>
           </div>
-        }
+        )}
       </div>
-      <div className="text-white text-center">
-        <h1 className="text-4xl font-bold mb-4">Your Next Career Awaits!</h1>
-        <p className="text-lg mb-8">
+      <div className="text-center text-white">
+        <h1 className="mb-4 text-4xl font-bold">Your Next Career Awaits!</h1>
+        <p className="mb-8 text-lg">
           Unlock exciting job opportunities and connect with top employers.
         </p>
 
         <Link to="/jobs">
-          <button className="bg-white text-teal-500 px-6 py-2 rounded-full font-bold hover:bg-teal-400 transition duration-300 mr-4">
+          <button className="mr-4 rounded-full bg-white px-6 py-2 font-bold text-teal-500 transition duration-300 hover:bg-teal-400">
             Explore Jobs
           </button>
         </Link>
-        {
-          userData.name ? <>
-
+        {userData.name ? (
+          <>
             <Link to="/create">
-              <button className="bg-white text-teal-500 px-6 py-2 rounded-full font-bold hover:bg-teal-400 transition duration-300 mr-4">
+              <button className="mr-4 rounded-full bg-white px-6 py-2 font-bold text-teal-500 transition duration-300 hover:bg-teal-400">
                 Post Job
               </button>
             </Link>
-          </> : <>
-
+          </>
+        ) : (
+          <>
             <Link to="/auth/login">
-              <button className="bg-white text-teal-500 px-6 py-2 rounded-full font-bold hover:bg-teal-400 transition duration-300 mr-4">
+              <button className="mr-4 rounded-full bg-white px-6 py-2 font-bold text-teal-500 transition duration-300 hover:bg-teal-400">
                 Login
               </button>
             </Link>
             <Link to="/auth/register">
-              <button className="bg-white text-teal-500 px-6 py-2 rounded-full font-bold hover:bg-teal-400 transition duration-300">
+              <button className="rounded-full bg-white px-6 py-2 font-bold text-teal-500 transition duration-300 hover:bg-teal-400">
                 Sign Up
               </button>
             </Link>
           </>
-        }
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

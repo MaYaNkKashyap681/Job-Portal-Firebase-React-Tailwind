@@ -1,7 +1,7 @@
 const Loading = () => {
   return (
-    <div className="border-gray-300 h-8 w-8 mx-auto animate-spin rounded-full border-8 border-t-teal-600" />
-  )
-}
+    <div className="mx-auto h-8 w-8 animate-spin rounded-full border-8 border-gray-300 border-t-teal-600" />
+  );
+};
 
-export default Loading
+export default Loading;

@@ -1,8 +1,15 @@
 import { Navigate, Outlet, createBrowserRouter } from 'react-router-dom';
-import { Apply, Create, Explore, Home, Responses,Signin, Signup } from '../../pages';
+import {
+  Apply,
+  Create,
+  Explore,
+  Home,
+  Responses,
+  Signin,
+  Signup,
+} from '../../pages';
 import Auth from '../../pages/Auth';
 import { useAuthStatus } from '../../shared/hooks/useAuthStatus';
-
 
 export const AppLayout = () => {
   return (
@@ -27,17 +34,17 @@ export const routes = createBrowserRouter([
         children: [
           {
             path: '/auth/login',
-            element: <Signin />
+            element: <Signin />,
           },
           {
             path: '/auth/register',
-            element: <Signup />
-          }
-        ]
+            element: <Signup />,
+          },
+        ],
       },
       {
         path: '/apply/:jobid',
-        element: <Apply />
+        element: <Apply />,
       },
       {
         path: '/create',
@@ -45,12 +52,12 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/jobs',
-        element: <Explore />
+        element: <Explore />,
       },
       {
         path: '/responses/:jobid',
-        element: <Responses />
-      }
+        element: <Responses />,
+      },
     ],
   },
 ]);

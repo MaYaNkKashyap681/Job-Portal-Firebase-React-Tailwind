@@ -1,18 +1,27 @@
-import { RegisterFields } from "../components/RegisterForm";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, User } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../../config/firebase.config";
+import { RegisterFields } from '../components/RegisterForm';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  User,
+} from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../../config/firebase.config';
 
 export const registerUser = async (details: RegisterFields): Promise<User> => {
   const { name, email, password } = details;
   const auth = getAuth();
 
   try {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredentials.user;
 
     await updateProfile(user, {
-      displayName: name
+      displayName: name,
     });
 
     const userDocRef = doc(db, 'users', user.uid);
@@ -20,7 +29,7 @@ export const registerUser = async (details: RegisterFields): Promise<User> => {
       name,
       email,
       password,
-      hasJobPosted: false
+      hasJobPosted: false,
     });
 
     return user;

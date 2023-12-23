@@ -1,11 +1,11 @@
-import RegisterForm from "../features/auth/components/RegisterForm"
+import RegisterForm from '../features/auth/components/RegisterForm';
 
 const Signup = () => {
   return (
-    <div >
+    <div>
       <RegisterForm />
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
